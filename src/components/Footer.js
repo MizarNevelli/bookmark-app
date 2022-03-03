@@ -5,7 +5,7 @@ import { NAVIGATION_ITEMS } from "../constants"
 export default function Footer() {
 
     return (
-        <footer className="bg-grey-200 mt-24" aria-labelledby="footer-heading">
+        <footer className="bg-slate-100 mt-24 relative" aria-labelledby="footer-heading">
             <h2 id="footer-heading" className="sr-only">
                 Footer
             </h2>
@@ -14,7 +14,7 @@ export default function Footer() {
                     <div className="space-y-8 xl:col-span-1">
                         <img
                             className="h-10"
-                            src="https://tailwindui.com/img/logos/workflow-mark-gray-300.svg"
+                            src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
                             alt="Company name"
                         />
                         <p className="text-gray-500 text-base">

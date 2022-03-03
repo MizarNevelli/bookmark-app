@@ -1,6 +1,6 @@
 
 
-export const API_TOKEN = 'EuVO8AE2b8'
+export const API_TOKEN = 'EuVO8AE2b8';
 
 export const API_BOOKMARKS_ENPOINT = 'https://www.shamancake.com/spartan-demo/bookmarks';
 
@@ -8,7 +8,7 @@ export const BOOKMARK_EMPTY_BODY = {
     name: '',
     link: '',
     image: '', //base64
-}
+};
 
 export const NAVIGATION_ITEMS = {
     solutions: [
@@ -98,7 +98,7 @@ export const NAVIGATION_ITEMS = {
             ),
         },
     ],
-}
+};
 
 export const toBase64 = file => new Promise((resolve, reject) => {
     const reader = new FileReader();
