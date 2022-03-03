@@ -1,4 +1,3 @@
-// import './App.css';
 import { Fragment, useEffect, useState } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { MenuIcon, XIcon } from '@heroicons/react/outline'
@@ -9,16 +8,14 @@ function NavBar() {
     const navigation = [
         { name: 'Create Bookmark', href: '/create-bookmark', current: false },
         { name: 'Home', href: '/', current: false },
-        // { name: 'Home', href: '/', current: false },
     ]
     const location = useLocation()
     const [currentPath, setCurrentPath] = useState('');
-    // console.log('navigation', navigation)
 
 
-   useEffect(()=>{
-       setCurrentPath(location.pathname)
-   },[location.pathname])
+    useEffect(() => {
+        setCurrentPath(location.pathname)
+    }, [location.pathname])
 
     function classNames(...classes) {
         return classes.filter(Boolean).join(' ')
@@ -48,30 +45,26 @@ function NavBar() {
                                         src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
                                         alt="Workflow"
                                     />
-                                    <span className='text-xl text-gray-300 px-3 py-2 rounded-md text-xl font-xl'> 
+                                    <span className='text-xl text-gray-300 px-3 py-2 rounded-md text-xl font-xl'>
                                         Bookmark App
                                     </span>
                                 </div>
                                 <div className="flex justify-center items-center hidden sm:flex">
                                     <div className="flex space-x-4">
                                         {navigation.map((item, i) => (
-                                            <Link 
+                                            <Link
                                                 to={item.href}
                                                 key={item.name}
-                                             >
-                                                    <span
-                                                        className={classNames(
-                                                            currentPath === item.href ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                                                            'px-3 py-2 rounded-md text-sm font-medium'
-                                                        )}
-                                                        aria-current={currentPath === item.href ? 'page' : undefined}
-                                                        onClick={(e)=>{
-                                                            // console.log(e.target.innerText)
-                                                            // if (e.target.innerText === item.name) navigation[i].current = !navigation[i].current
-                                                        }}
-                                                    >
-                                                        {item.name}
-                                                    </span>
+                                            >
+                                                <span
+                                                    className={classNames(
+                                                        currentPath === item.href ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                                                        'px-3 py-2 rounded-md text-sm font-medium'
+                                                    )}
+                                                    aria-current={currentPath === item.href ? 'page' : undefined}
+                                                >
+                                                    {item.name}
+                                                </span>
                                             </Link>
                                         ))}
                                     </div>
