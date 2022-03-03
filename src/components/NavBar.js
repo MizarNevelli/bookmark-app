@@ -22,7 +22,7 @@ function NavBar() {
     }
 
     return (
-        <Disclosure as="nav" className="bg-gray-600 ">
+        <Disclosure as="nav" className="bg-indigo-700 ">
             {({ open }) => (
                 <>
                     <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 ">
@@ -58,7 +58,7 @@ function NavBar() {
                                             >
                                                 <span
                                                     className={classNames(
-                                                        currentPath === item.href ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                                                        currentPath === item.href ? 'bg-white text-indigo' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                                                         'px-3 py-2 rounded-md text-sm font-medium'
                                                     )}
                                                     aria-current={currentPath === item.href ? 'page' : undefined}

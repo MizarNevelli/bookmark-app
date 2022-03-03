@@ -3,11 +3,12 @@ import BookMarkContainer from "../components/BookMarksContainer";
 import NavBar from "../components/NavBar";
 import { getBookmarks } from "../fetch/bookmarks";
 import { API_TOKEN } from "../constants";
+import { useAlert } from "react-alert";
 
 function Home() {
 
     const [bookMarksList, setBookMarksList] = useState([]);
-    // const token = API_TOKEN;
+    const alert = useAlert();
 
     useEffect(() => {
         const fetchBookmarks = async () => {
@@ -15,8 +16,8 @@ function Home() {
                 const res = await getBookmarks(API_TOKEN);
                 setBookMarksList(res);
             } catch (err) {
-                // alert.error(t('COMMON:GENERIC_ERROR'));
-                console.log(err)
+                alert.error('Error, data not available');
+                throw err
             }
         };
 
@@ -29,6 +30,7 @@ function Home() {
             <div style={{ height: 'calc(100vh - 4rem)', overflow: 'scroll'}} className="bg-gray-200 " >
                 <h1>Home</h1>
                 <BookMarkContainer 
+                    setBookMarksList={setBookMarksList}
                     bookMarksList={bookMarksList} 
                 />
 

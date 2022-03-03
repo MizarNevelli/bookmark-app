@@ -1,4 +1,4 @@
-import React, { useEffect, Fragment, useRef, useState } from "react";
+import React, { Fragment, useRef, useState } from "react";
 import NavBar from "../components/NavBar";
 import { API_TOKEN, BOOKMARK_EMPTY_BODY, toBase64 } from "../constants";
 import { createBookmark } from "../fetch/bookmarks";
@@ -12,14 +12,9 @@ function Create() {
     const cancelButtonRef = useRef(null);
     const alert = useAlert();
 
-    // useEffect(() => {
-    //     console.log('bookmarkBody', bookmarkBody)
-    // }, [bookmarkBody]);
-
     return (
         <>
             <NavBar />
-
             <div
                 style={{ height: 'calc(100vh - 4rem)', overflow: 'scroll' }}
                 className="w-100 flex flex-col pt-20 items-center p-2 bg-gray-200"
@@ -32,7 +27,8 @@ function Create() {
                             type="text"
                             name="bookmarkName"
                             id="bookmarkName"
-                            className="font-normal h-8 text-gray-700 px-2 shadow-sm focus:ring-indigo-500  focus:border-indigo-500 block w-full sm:text-sm border-gray-900 rounded-md"
+                            className="font-normal h-8 text-gray-700 px-2 shadow-sm focus:ring-indigo-500 
+                            focus:border-indigo-500 block w-full sm:text-sm border-gray-900 rounded-md"
                             placeholder="Insert your name"
                             onChange={(e) => {
                                 setBookMarkBody({
@@ -42,10 +38,8 @@ function Create() {
                             }}
                         />
                     </div>
-
                     <div>
                         <label htmlFor="formFile" className="form-label inline-block mb-2 text-gray-700">Insert Link to Website</label>
-
                         <div className="mt-1 flex rounded-md shadow-sm">
                             <span className="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 sm:text-sm">
                                 https://
@@ -54,7 +48,8 @@ function Create() {
                                 type="text"
                                 name="company-website"
                                 id="company-website"
-                                className=" border-gray-300 h-8 flex-1  min-w-0 block w-full px-3 py-2 rounded-none rounded-r-md focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300"
+                                className=" border-gray-300 h-8 flex-1  min-w-0 block w-full px-3 py-2 rounded-none 
+                                rounded-r-md focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300"
                                 placeholder="www.example.com"
                                 onChange={(e) => {
                                     setBookMarkBody({
@@ -65,12 +60,12 @@ function Create() {
                             />
                         </div>
                     </div>
-
                     <div className=" my-4 flex justify-center">
                         <div className="mb-3 w-96">
                             <label htmlFor="formFile" className="form-label inline-block mb-2 text-gray-700">Upload Image</label>
                             <input
-                                className="font-normal text-gray-700 px-2 shadow-sm focus:ring-indigo-500  focus:border-indigo-500 block w-full sm:text-sm border-gray-900 rounded-md"
+                                className="font-normal text-gray-700 px-2 shadow-sm focus:ring-indigo-500
+                                focus:border-indigo-500 block w-full sm:text-sm border-gray-900 rounded-md"
                                 type="file"
                                 id="formFile"
                                 onChange={async (e) => {
@@ -82,7 +77,7 @@ function Create() {
                                 }}
                             />
                             <p className="mt-1 text-xs">
-                                A profile picture is useful to confirm your are logged into your account
+                                Insert a file .jpeg .jpg or .png 
                             </p>
                         </div>
                     </div>
@@ -90,7 +85,8 @@ function Create() {
                     <div className="text-center w-full mt-8">
                         <button
                             type="button"
-                            className="m-auto inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                            className="m-auto inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm
+                             text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                             onClick={() => {
                                 if (bookmarkBody.image === '' || bookmarkBody.link === '' || bookmarkBody.name === '') {
                                     setOpen(true);
@@ -169,9 +165,7 @@ function Create() {
                     </Dialog>
                 </Transition.Root>
             </div>
-        </>
-
-    );
+        </>);
 }
 
 export default Create;

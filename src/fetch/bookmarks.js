@@ -19,7 +19,6 @@ export const getBookmarks = async (token = '') => {
 
         return data;
     } catch (err) {
-        console.log('err:::', err);
         throw err;
     }
 };
@@ -40,7 +39,6 @@ export const createBookmark = async (token, bookmarkBody) => {
             throw response;
         }
         const { data = [] } = response || {};
-        console.log('data from create', data)
         return data;
     } catch (err) {
         throw err;
@@ -70,11 +68,12 @@ export const updateBookmark = async (token, bookmarkBody) => {
     }
 };
 
-export const deleteBookmark = async (token, bookmarkBody) => {
+export const deleteBookmark = async (token, id) => {
+    const params = {}
     try {
         const response = await axios.post(
-            `${API_BOOKMARKS_ENPOINT}/delete/${bookmarkBody.id}`,
-            bookmarkBody,
+            `${API_BOOKMARKS_ENPOINT}/delete/${id}`,
+            params,
             {
                 headers: {
                     'token': `${token}`,
