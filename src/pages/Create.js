@@ -19,15 +19,15 @@ function Create() {
                 style={{ height: 'calc(100vh - 4rem)', overflow: 'scroll' }}
                 className="w-100 flex flex-col pt-20 items-center p-2 bg-gray-200"
             >
-                <h2 className="text-2xl font-extrabold tracking-tight text-gray-900 mb-4">Create a Bookmark</h2>
+                <h2 className="text-2xl font-extrabold tracking-tight text-indigo-700 mb-4">Create a Bookmark</h2>
                 <form>
                     <div className=" my-4 w-96">
-                        <label htmlFor="formFile" className="form-label inline-block mb-2 text-gray-700">Name</label>
+                        <label htmlFor="formFile" className="form-label inline-block mb-2 text-indigo-700">Name</label>
                         <input
                             type="text"
                             name="bookmarkName"
                             id="bookmarkName"
-                            className="font-normal h-8 text-gray-700 px-2 shadow-sm focus:ring-indigo-500 
+                            className="font-normal h-8 text-indigo-700 px-2 shadow-sm focus:ring-indigo-500 
                             focus:border-indigo-500 block w-full sm:text-sm border-gray-900 rounded-md"
                             placeholder="Insert your name"
                             onChange={(e) => {
@@ -39,9 +39,9 @@ function Create() {
                         />
                     </div>
                     <div>
-                        <label htmlFor="formFile" className="form-label inline-block mb-2 text-gray-700">Insert Link to Website</label>
+                        <label htmlFor="formFile" className="form-label inline-block mb-2 text-indigo-700">Insert Link to Website</label>
                         <div className="mt-1 flex rounded-md shadow-sm">
-                            <span className="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 sm:text-sm">
+                            <span className="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-indigo-700 sm:text-sm">
                                 https://
                             </span>
                             <input
@@ -61,10 +61,10 @@ function Create() {
                         </div>
                     </div>
                     <div className=" my-4 flex justify-center">
-                        <div className="mb-3 w-96">
-                            <label htmlFor="formFile" className="form-label inline-block mb-2 text-gray-700">Upload Image</label>
+                        <div className="mb-3 w-96 ">
+                            <label htmlFor="formFile" className="form-label inline-block mb-2 text-indigo-700">Upload Image</label>
                             <input
-                                className="font-normal text-gray-700 px-2 shadow-sm focus:ring-indigo-500
+                                className="border-indigo-500 font-normal text-indigo-700 px-2 shadow-sm focus:ring-indigo-500
                                 focus:border-indigo-500 block w-full sm:text-sm border-gray-900 rounded-md"
                                 type="file"
                                 id="formFile"
@@ -76,7 +76,7 @@ function Create() {
                                     })
                                 }}
                             />
-                            <p className="mt-1 text-xs">
+                            <p className="mt-1 text-xs text-indigo-400">
                                 Insert a file .jpeg .jpg or .png 
                             </p>
                         </div>

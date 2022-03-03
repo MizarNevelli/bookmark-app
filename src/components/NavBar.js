@@ -58,7 +58,7 @@ function NavBar() {
                                             >
                                                 <span
                                                     className={classNames(
-                                                        currentPath === item.href ? 'bg-white text-indigo' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                                                        currentPath === item.href ? 'bg-white text-indigo' : 'text-gray-300 hover:bg-indigo-500 hover:text-white',
                                                         'px-3 py-2 rounded-md text-sm font-medium'
                                                     )}
                                                     aria-current={currentPath === item.href ? 'page' : undefined}

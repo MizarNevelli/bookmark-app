@@ -4,6 +4,7 @@ import NavBar from "../components/NavBar";
 import { getBookmarks } from "../fetch/bookmarks";
 import { API_TOKEN } from "../constants";
 import { useAlert } from "react-alert";
+import Footer from "../components/Footer";
 
 function Home() {
 
@@ -33,6 +34,7 @@ function Home() {
                     setBookMarksList={setBookMarksList}
                     bookMarksList={bookMarksList} 
                 />
+                <Footer/>
 
             </div>
         </>

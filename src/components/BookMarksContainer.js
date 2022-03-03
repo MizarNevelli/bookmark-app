@@ -10,7 +10,7 @@ function BookMarksContainer({ bookMarksList = [], setBookMarksList = {} }) {
     const onDeleteElement = async (id) => {
         try {
                 await deleteBookmark(API_TOKEN, id);
-                alert.success('Elemento eliminato!');
+                alert.success('Element deleted successfully!');
                 const updatedItems = await getBookmarks(API_TOKEN);
                 setBookMarksList(updatedItems);
         } catch (err) {
@@ -23,7 +23,7 @@ function BookMarksContainer({ bookMarksList = [], setBookMarksList = {} }) {
     return (
         <div >
             <div className="mx-auto py-4 px-12 ">
-                <h2 className="py-8 text-2xl font-extrabold tracking-tight text-gray-900 text-center w-full">Your Bookmarks</h2>
+                <h2 className="py-8 text-2xl font-extrabold tracking-tight text-indigo-700 text-center w-full">Your Bookmarks</h2>
 
                 <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
                     {bookMarksList.map((element) => (
@@ -33,7 +33,7 @@ function BookMarksContainer({ bookMarksList = [], setBookMarksList = {} }) {
                                 className={`bg-no-repeat bg-center bg-cover w-full h-64 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:aspect-none`}
                             >
                                 <div
-                                    className="z-50 absolute flex justify-center items-center right-2 top-2 bg-white w-8 h-8 rounded-full"
+                                    className="z-50 absolute flex justify-center items-center right-2 top-2 bg-white bg-opacity-60 border-black border-1 cursor-pointer border-solid w-8 h-8 rounded-full"
                                     onClick={() => {
                                         onDeleteElement(element.id);
                                     }}
