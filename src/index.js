@@ -15,7 +15,6 @@ const alertOptions = {
   transition: transitions.SCALE
 };
 
-
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>

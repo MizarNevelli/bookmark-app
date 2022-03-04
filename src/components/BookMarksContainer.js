@@ -1,16 +1,22 @@
 import { Dialog, Transition } from "@headlessui/react";
-import { ExclamationIcon } from "@heroicons/react/outline";
+import { BookmarkAltIcon, ExclamationIcon } from "@heroicons/react/outline";
 import React, { Fragment, useRef, useState } from "react";
 import { useAlert } from "react-alert";
 import { API_TOKEN } from "../constants";
 import { deleteBookmark, getBookmarks } from "../fetch/bookmarks";
+import UpdateBookmarkModal from "./UpdateBookmarkModal";
 
 function BookMarksContainer({ bookMarksList = [], setBookMarksList = {} }) {
 
     const alert = useAlert();
     const [openModalDelete, setOpenModalDelete] = useState(false);
+    const [openModalUpdate, setOpenModalUpdate] = useState(false);
+    const [elementToUpdate, setElementToUpdate] = useState({});
+    
     const cancelButtonRef = useRef(null);
     const [deleteId, setDeleteId] = useState('');
+
+    console.log('openModalUpdate', openModalUpdate)
 
     const onDeleteElement = async (id) => {
         try {
@@ -22,14 +28,14 @@ function BookMarksContainer({ bookMarksList = [], setBookMarksList = {} }) {
             alert.error('Error, Try again')
             throw err
         } 
-    }
+    };
 
     return (
         <div >
-            <div className="mx-auto py-4 px-12 ">
+            <div className="mx-auto py-4 px-4 ">
                 <h2 className="py-8 text-2xl font-extrabold tracking-tight text-indigo-700 text-center w-full">Your Bookmarks</h2>
                 <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-                    {bookMarksList.map((element) => (
+                    {bookMarksList && bookMarksList.map((element) => (
                         <div key={element.id} className="group relative">
                             <div
                                 style={{ backgroundImage: `url(${element.image_url})` }}
@@ -48,6 +54,19 @@ function BookMarksContainer({ bookMarksList = [], setBookMarksList = {} }) {
                                         <path strokeLinecap="round" strokeLinejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                                     </svg>
                                 </div>
+                                <div
+                                    data-modal-toggle="popup-modal"
+                                    className=" absolute flex justify-center items-center left-2 top-2 bg-white bg-opacity-60 border-black border-1 cursor-pointer border-solid w-8 h-8 rounded-full"
+                                    onClick={() => {
+                                        setOpenModalUpdate(true);
+                                        setElementToUpdate(element);
+                                    }}
+                                    type="button"
+                                >
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fillRule="evenodd" d="M3 4a1 1 0 011-1h4a1 1 0 010 2H6.414l2.293 2.293a1 1 0 01-1.414 1.414L5 6.414V8a1 1 0 01-2 0V4zm9 1a1 1 0 110-2h4a1 1 0 011 1v4a1 1 0 11-2 0V6.414l-2.293 2.293a1 1 0 11-1.414-1.414L13.586 5H12zm-9 7a1 1 0 112 0v1.586l2.293-2.293a1 1 0 011.414 1.414L6.414 15H8a1 1 0 110 2H4a1 1 0 01-1-1v-4zm13-1a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 110-2h1.586l-2.293-2.293a1 1 0 011.414-1.414L15 13.586V12a1 1 0 011-1z" clipRule="evenodd" />
+                                    </svg>
+                                </div>
                             </div>
                             <div className="mt-2 flex justify-between rounded-md  bg-white">
                                 <h3 className="text-sm text-gray-700 text-center w-full">
@@ -60,6 +79,12 @@ function BookMarksContainer({ bookMarksList = [], setBookMarksList = {} }) {
                         </div>
                     ))}
                 </div>
+                {/* MODAL UPDATE */}
+                {openModalUpdate && 
+                    <UpdateBookmarkModal 
+                        setOpenModalUpdate={setOpenModalUpdate} 
+                        elementToUpdate={elementToUpdate}
+                />}
                 {/* MODAL DELETE */}
                 <Transition.Root show={openModalDelete} as={Fragment}>
                     <Dialog as="div" className="fixed z-1000 inset-0 overflow-y-auto" initialFocus={cancelButtonRef} onClose={setOpenModalDelete}>
