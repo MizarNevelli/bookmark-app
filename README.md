@@ -29,7 +29,7 @@ Runs the app in the development mode.
     PRIMARY KEY (id)
 );`
 
-- Lettura di tutti i record presenti nella tabella bookmarks
+- Lettura di tutti i record presenti nella tabella bookmarks  
 `SELECT * FROM bookmarks;`
 
 - Creazione di un record all'interno della tabella bookmarks:  

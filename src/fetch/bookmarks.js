@@ -61,7 +61,6 @@ export const updateBookmark = async (token, bookmarkBody) => {
             throw response;
         }
         const { data } = response || {};
-        console.log('data from update', data)
         return data;
     } catch (err) {
         throw err;
@@ -85,7 +84,6 @@ export const deleteBookmark = async (token, id) => {
             throw response;
         }
         const { data } = response || {};
-        console.log('data from delete', data)
         return data;
     } catch (err) {
         throw err;

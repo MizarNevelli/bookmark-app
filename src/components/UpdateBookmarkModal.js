@@ -4,13 +4,21 @@ import { useAlert } from "react-alert";
 import { API_TOKEN, toBase64 } from "../constants";
 import { getBookmarks, updateBookmark } from "../fetch/bookmarks";
 
-
 function UpdateBookmarkModal({ elementToUpdate = {}, setOpenModalUpdate = {}, setBookMarksList = {} }) {
 
     const alert = useAlert();
     const [bookmarkBody, setBookMarkBody] = useState(elementToUpdate);
 
     const onUpdateElement = async () => {
+        // Validation: error if all fields remain the same
+        if (bookmarkBody.link === elementToUpdate.link && 
+            bookmarkBody.name === elementToUpdate.name && 
+            (document?.querySelector('#formFile').value === '' ||
+            document?.querySelector('#formFile').value === null ))
+        {
+            alert.error('Update at least one field')
+            return;
+        }
         try {
             await updateBookmark(API_TOKEN, bookmarkBody);
             alert.success('Element Updated Successfully!');

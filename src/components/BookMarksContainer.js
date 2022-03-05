@@ -40,8 +40,8 @@ function BookMarksContainer({ bookMarksList = [], setBookMarksList = {} }) {
                 }
                 <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
                     
-                {bookMarksList && bookMarksList.map((element) => (
-                    <div class="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+                {bookMarksList && bookMarksList.map((element,i) => (
+                    <div key={i} style={{ backgroundColor: '#DCB6FF' }} className="max-w-sm bg-white rounded-lg border border-indigo-700 shadow-md dark:border-indigo-700">
                         <div
                                 style={{ backgroundImage: `url(${element.image_url})` }}
                                 className={`relative bg-no-repeat bg-center bg-cover w-full h-64 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:aspect-none`}
@@ -73,14 +73,21 @@ function BookMarksContainer({ bookMarksList = [], setBookMarksList = {} }) {
                                 </svg>
                             </div>
                         </div>
-                        <div class="p-5">
+                        <div className="p-5 rounded-md">
                             <div>
-                                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{element.name}</h5>
+                                <h5 className="mb-2 text-indigo-700 text-2xl font-bold tracking-tight">{element.name}</h5>
                             </div>
-                            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{ }</p>
-                            <a href={'https://' + element.link} target='_blank' rel="noreferrer">
-                                <p>Vai al sito linkato! </p>
-                            </a>
+                            <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">{ }</p>
+                            
+                            <button
+                                type="button"
+                                className="m-auto inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm
+                                        text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                            >
+                                <a href={'https://' + element.link} target='_blank' rel="noreferrer">
+                                    <p>Open link </p>
+                                </a>
+                            </button>
                         </div>
                     </div>
                 ))}

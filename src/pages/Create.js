@@ -26,7 +26,7 @@ function Create() {
             ref.current.value = "";
         } catch (err) {
             alert.error("ERROR! Try again");
-            console.log(err)
+            throw err
         }
     };
 
