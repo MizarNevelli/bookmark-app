@@ -29,4 +29,13 @@ Runs the app in the development mode.
 `SELECT * FROM bookmarks;`
 
 - Creazione di un record all'interno della tabella bookmarks:
-``
+`INSERT INTO bookmarks (id, name, link)
+VALUES ('53', 'google','www.google.com');`
+
+- Modifica di un record all'interno della tabella bookmark:
+`UPDATE bookmarks
+SET name = 'amazon', link = 'www.amazon.com'
+WHERE id = '53';`
+
+- Eliminazione di un record all'interno della tabella bookmarks:
+`DELETE FROM bookmarks WHERE id='53';`
