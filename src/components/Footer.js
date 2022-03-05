@@ -85,7 +85,7 @@ export default function Footer() {
                     </div>
                 </div>
                 <div className="mt-12 border-t border-gray-200 pt-8">
-                    <p className="text-base text-gray-400 xl:text-center">&copy; 2020 Workflow, Inc. All rights reserved.</p>
+                    <p className="text-base text-gray-400 xl:text-center">&copy; 2020 BookMark App, Inc. All rights reserved.</p>
                 </div>
             </div>
         </footer>

@@ -15,3 +15,18 @@ Runs the app in the development mode.
 
 ## Bonus Points
 
+# MYSQL queries:
+
+- Creazione della tabella della lista bookmarks :
+### `CREATE TABLE bookmarks (
+    id nvarchar(4),
+    name varchar(30),
+    link varchar(30),
+    PRIMARY KEY (id)
+);`
+
+- Lettura di tutti i record presenti nella tabella bookmarks
+`SELECT * FROM bookmarks;`
+
+- Creazione di un record all'interno della tabella bookmarks:
+``

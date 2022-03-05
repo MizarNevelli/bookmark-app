@@ -73,11 +73,16 @@ function BookMarksContainer({ bookMarksList = [], setBookMarksList = {} }) {
                                     </svg>
                                 </div>
                             </div>
-                            <div className="mt-2 flex justify-between rounded-md  bg-white">
+                            <div className="mt-2 justify-between rounded-md  bg-white">
+                                <div className="w-full ">
+                                    <>Name: </><p className="text-indigo-700 text-xl"> {element.name}</p>
+                                    <>ID: </><p className="text-indigo-700 text-xl">{element.id}</p>
+                                </div>
+                                
                                 <h3 className="text-sm text-gray-700 text-center w-full">
                                     <a href={'https://' + element.link} target='_blank' rel="noreferrer">
-                                        <b>{element.name}</b>
-                                        <p>Clicca qui e Vai al sito linkato! </p>
+                                       
+                                        <p>Vai al sito linkato! </p>
                                     </a>
                                 </h3>
                             </div>

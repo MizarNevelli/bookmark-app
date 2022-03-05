@@ -39,7 +39,7 @@ function NavBar() {
                                 </Disclosure.Button>
                             </div>
                             <div className="flex-1 flex items-center justify-between sm:items-stretch sm:justify-start">
-                                <div className="flex-shrink-0 flex items-center">
+                                <div className="flex-shrink-0 flex items-center mr-8">
                                     <img
                                         className="h-8 w-auto hidden sm:block"
                                         src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
@@ -58,7 +58,7 @@ function NavBar() {
                                             >
                                                 <span
                                                     className={classNames(
-                                                        currentPath === item.href ? 'bg-white text-indigo' : 'text-gray-300 hover:bg-indigo-500 hover:text-white',
+                                                        currentPath === item.href ? 'border-2 border-white text-gray-300' : 'text-gray-300 hover:bg-indigo-500 hover:text-white',
                                                         'px-3 py-2 rounded-md text-sm font-medium'
                                                     )}
                                                     aria-current={currentPath === item.href ? 'page' : undefined}
@@ -94,34 +94,19 @@ function NavBar() {
                                     >
                                         <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
                                             <Menu.Item>
-                                                {({ active }) => (
-                                                    <a
-                                                        href="#"
-                                                        className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
-                                                    >
+                                                    <span className={'block px-4 py-2 text-sm text-gray-700'}>
                                                         Your Profile
-                                                    </a>
-                                                )}
+                                                    </span>
                                             </Menu.Item>
                                             <Menu.Item>
-                                                {({ active }) => (
-                                                    <a
-                                                        href="#"
-                                                        className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
-                                                    >
+                                                    <span className={'block px-4 py-2 text-sm text-gray-700'}>
                                                         Settings
-                                                    </a>
-                                                )}
+                                                    </span>
                                             </Menu.Item>
                                             <Menu.Item>
-                                                {({ active }) => (
-                                                    <a
-                                                        href="#"
-                                                        className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
-                                                    >
+                                                    <span className={'block px-4 py-2 text-sm text-gray-700'}>
                                                         Sign out
-                                                    </a>
-                                                )}
+                                                    </span>
                                             </Menu.Item>
                                         </Menu.Items>
                                     </Transition>

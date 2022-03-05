@@ -14,20 +14,20 @@ function Home() {
     useEffect(() => {
         const fetchBookmarks = async () => {
             try {
-                const res = await getBookmarks(API_TOKEN);
-                setBookMarksList(res);
+                const result = await getBookmarks(API_TOKEN);
+                setBookMarksList(result);
             } catch (err) {
                 alert.error('Error, data not available');
-                throw err
+                throw err;
             }
         };
         fetchBookmarks();
-    }, []);
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
     return (
         <>
             <NavBar />
-            <div style={{ height: 'calc(100vh - 4rem)', overflow: 'scroll'}} className="bg-gray-200 " >
+            <div className="bg-gray-200 " style={{ height: 'calc(100vh - 4rem)', overflow: 'scroll' }} >
                 {/* <h1>Home</h1> */}
                 <BookMarkContainer 
                     setBookMarksList={setBookMarksList}
