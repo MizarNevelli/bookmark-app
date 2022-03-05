@@ -18,7 +18,7 @@ Runs the app in the development mode.
 # MYSQL queries:
 
 - Creazione della tabella della lista bookmarks :
-### `CREATE TABLE bookmarks (
+- `CREATE TABLE bookmarks (
     id nvarchar(4),
     name varchar(30),
     link varchar(30),
@@ -26,10 +26,10 @@ Runs the app in the development mode.
 );`
 
 - Lettura di tutti i record presenti nella tabella bookmarks
-`SELECT * FROM bookmarks;`
+- `SELECT * FROM bookmarks;`
 
 - Creazione di un record all'interno della tabella bookmarks:
-`INSERT INTO bookmarks (id, name, link)
+- `INSERT INTO bookmarks (id, name, link)
 VALUES ('53', 'google','www.google.com');`
 
 - Modifica di un record all'interno della tabella bookmark:
