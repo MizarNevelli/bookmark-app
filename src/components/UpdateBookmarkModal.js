@@ -11,20 +11,20 @@ function UpdateBookmarkModal({ elementToUpdate = {}, setOpenModalUpdate = {}, se
 
     const onUpdateElement = async () => {
         // Validation: error if all fields remain the same
-        if (bookmarkBody.link === elementToUpdate.link && 
-            bookmarkBody.name === elementToUpdate.name && 
+        if (bookmarkBody.link === elementToUpdate.link &&
+            bookmarkBody.name === elementToUpdate.name &&
             (document?.querySelector('#formFile').value === '' ||
-            document?.querySelector('#formFile').value === null ))
-        {
+                document?.querySelector('#formFile').value === null)) {
             alert.error('Update at least one field')
             return;
         }
         try {
             await updateBookmark(API_TOKEN, bookmarkBody);
             alert.success('Element Updated Successfully!');
+            setOpenModalUpdate(false);
             const updatedItems = await getBookmarks(API_TOKEN);
             setBookMarksList(updatedItems);
-            setOpenModalUpdate(false);
+
         } catch (err) {
             alert.error('Error, Try again')
             throw err
@@ -36,7 +36,7 @@ function UpdateBookmarkModal({ elementToUpdate = {}, setOpenModalUpdate = {}, se
             {/* <!-- Main modal --> */}
             <div className="flex overflow-hidden h-screen w-screen p-4 lg:p-48 fixed right-0 left-0 top-0 z-50 justify-center items-center">
                 <div className="relative m-4 flex items-center justify-center w-full max-w-2xl h-full">
-                    <div className="relative px-6 rounded-lg shadow" style={{ backgroundColor:'#F5F5F5'}}>
+                    <div className="relative px-6 rounded-lg shadow" style={{ backgroundColor: '#F5F5F5' }}>
                         {/* <!-- Modal header --> */}
                         <div className="flex justify-between items-start p-5 rounded-t border-b dark:border-gray-600">
                             <h3 className="text-xl text-gray-600 lg:text-2xl ">
@@ -132,7 +132,7 @@ function UpdateBookmarkModal({ elementToUpdate = {}, setOpenModalUpdate = {}, se
                                     type="button"
                                     className="m-auto inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm
                                         text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                                    onClick={()=>{setOpenModalUpdate(false)}}
+                                    onClick={() => { setOpenModalUpdate(false) }}
                                 >
                                     Cancel
                                 </button>

@@ -1,12 +1,12 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { ExclamationIcon } from "@heroicons/react/outline";
-import React, { Fragment, useRef, useState } from "react";
+import React, { Fragment, useEffect, useRef, useState } from "react";
 import { useAlert } from "react-alert";
-import { API_TOKEN } from "../constants";
+import { API_TOKEN, showConsoleWelcome } from "../constants";
 import { deleteBookmark, getBookmarks } from "../fetch/bookmarks";
 import UpdateBookmarkModal from "./UpdateBookmarkModal";
 
-function BookMarksContainer({ bookMarksList = [], setBookMarksList = {} }) {
+function BookMarksContainer() {
 
     const alert = useAlert();
     const [openModalDelete, setOpenModalDelete] = useState(false);
@@ -14,6 +14,25 @@ function BookMarksContainer({ bookMarksList = [], setBookMarksList = {} }) {
     const [elementToUpdate, setElementToUpdate] = useState({});
     const cancelButtonRef = useRef(null);
     const [deleteId, setDeleteId] = useState('');
+    const [bookMarksList, setBookMarksList] = useState([]);
+
+    useEffect(() => {
+        // Show fancy emoticon in the browser console
+        showConsoleWelcome()
+    }, [])
+
+    useEffect(() => {
+        const fetchBookmarks = async () => {
+            try {
+                const result = await getBookmarks(API_TOKEN);
+                setBookMarksList(result);
+            } catch (err) {
+                alert.error('Error, data not available');
+                throw err;
+            }
+        };
+        fetchBookmarks();
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
     const onDeleteElement = async (id) => {
         try {

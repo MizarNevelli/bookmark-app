@@ -10,6 +10,13 @@ export const BOOKMARK_EMPTY_BODY = {
     image: '', //base64
 };
 
+export const toBase64 = file => new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = error => reject(error);
+});
+
 export const NAVIGATION_ITEMS = {
     solutions: [
         { name: 'Marketing', href: '#' },
@@ -163,11 +170,13 @@ export const WELCOME_STYLE = `
   background-position: center center;
   background-repeat: no-repeat;
 `;
+export const WELCOME_STYLE_TEXT = 'background: purple; color: #indigo;'
 
-export const toBase64 = file => new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => resolve(reader.result);
-    reader.onerror = error => reject(error);
-});
+export const showConsoleWelcome = () => {
+    console.clear();
+    console.log("%c Welcome, this is the Bookmark App!", WELCOME_STYLE_TEXT);
+    console.log("%c ", WELCOME_STYLE);
+}
+
+
 
