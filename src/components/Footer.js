@@ -5,7 +5,7 @@ import { NAVIGATION_ITEMS } from "../constants"
 export default function Footer() {
 
     return (
-        <footer className="bg-slate-100 mt-24 relative" aria-labelledby="footer-heading">
+        <footer className="bg-slate-100 mt-32 relative" aria-labelledby="footer-heading">
             <h2 id="footer-heading" className="sr-only">
                 Footer
             </h2>

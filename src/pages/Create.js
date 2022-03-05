@@ -11,6 +11,24 @@ function Create() {
     const [open, setOpen] = useState(false);
     const cancelButtonRef = useRef(null);
     const alert = useAlert();
+    const ref = useRef();
+
+    const onCreateBookmark = async () => {
+        if (bookmarkBody.image === '' || bookmarkBody.link === '' || bookmarkBody.name === '') {
+            setOpen(true);
+            return;
+        }
+        try {
+            await createBookmark(API_TOKEN, bookmarkBody);
+            alert.success("Successfuly Inserted!");
+            // RESET Form values
+            setBookMarkBody(BOOKMARK_EMPTY_BODY);
+            ref.current.value = "";
+        } catch (err) {
+            alert.error("ERROR! Try again");
+            console.log(err)
+        }
+    };
 
     return (
         <>
@@ -20,13 +38,17 @@ function Create() {
                 className="w-100 flex flex-col pt-20 items-center p-2 bg-gray-200"
             >
                 <h2 className="text-2xl font-extrabold tracking-tight text-indigo-700 mb-4">Create a Bookmark</h2>
-                <form>
-                    <div className=" my-4 w-96">
+                <form 
+                    // style={{ width: '-webkit-fill-available' }} 
+                    className="w-80 sm:w-96"
+                >
+                    <div className="my-4">
                         <label htmlFor="formFile" className="form-label inline-block mb-2 text-indigo-700">Name</label>
                         <input
                             type="text"
                             name="bookmarkName"
                             id="bookmarkName"
+                            value={bookmarkBody.name}
                             className="font-normal h-8 text-indigo-700 px-2 shadow-sm focus:ring-indigo-500 
                             focus:border-indigo-500 block w-full sm:text-sm border-gray-900 rounded-md"
                             placeholder="Insert your name"
@@ -47,6 +69,7 @@ function Create() {
                             <input
                                 type="text"
                                 name="company-website"
+                                value={bookmarkBody.link}
                                 id="company-website"
                                 className=" border-gray-300 h-8 flex-1  min-w-0 block w-full px-3 py-2 rounded-none 
                                 rounded-r-md focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300"
@@ -54,7 +77,7 @@ function Create() {
                                 onChange={(e) => {
                                     setBookMarkBody({
                                         ...bookmarkBody,
-                                        link: `https://${e.target.value}`,
+                                        link: `${e.target.value}`,
                                     })
                                 }}
                             />
@@ -67,7 +90,9 @@ function Create() {
                                 className="border-indigo-500 font-normal text-indigo-700 px-2 shadow-sm focus:ring-indigo-500
                                 focus:border-indigo-500 block w-full sm:text-sm border-gray-900 rounded-md"
                                 type="file"
-                                id="formFile"
+                                // id="formFile"
+                                // value={bookmarkBody?.image}
+                                ref={ref}
                                 onChange={async (e) => {
                                     const imgBase64 = await toBase64(e.target.files[0]);
                                     setBookMarkBody({
@@ -87,19 +112,7 @@ function Create() {
                             type="button"
                             className="m-auto inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm
                              text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                            onClick={() => {
-                                if (bookmarkBody.image === '' || bookmarkBody.link === '' || bookmarkBody.name === '') {
-                                    setOpen(true);
-                                    return;
-                                }
-                                try {
-                                    const result = createBookmark(API_TOKEN, bookmarkBody);
-                                    alert.success("Successfuly Inserted!");
-                                } catch (err) {
-                                    alert.error("ERROR! Try again");
-                                    console.log(err)
-                                }
-                            }}
+                            onClick={() => onCreateBookmark()}
                         >
                             Create Bookmark
                         </button>

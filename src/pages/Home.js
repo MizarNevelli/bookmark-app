@@ -21,7 +21,6 @@ function Home() {
                 throw err
             }
         };
-
         fetchBookmarks();
     }, []);
 
@@ -29,7 +28,7 @@ function Home() {
         <>
             <NavBar />
             <div style={{ height: 'calc(100vh - 4rem)', overflow: 'scroll'}} className="bg-gray-200 " >
-                <h1>Home</h1>
+                {/* <h1>Home</h1> */}
                 <BookMarkContainer 
                     setBookMarksList={setBookMarksList}
                     bookMarksList={bookMarksList} 
