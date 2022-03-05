@@ -14,8 +14,12 @@ Install the dependencies
 Runs the app in the development mode.
 
 ## Bonus Points
+### Framework css
 
-# MYSQL queries:
+- Tailwind
+
+### Responsive layout
+### MYSQL queries:
 
 - Creazione della tabella della lista bookmarks :
 - `CREATE TABLE bookmarks (
@@ -33,9 +37,9 @@ Runs the app in the development mode.
 VALUES ('53', 'google','www.google.com');`
 
 - Modifica di un record all'interno della tabella bookmark:
-`UPDATE bookmarks
+- `UPDATE bookmarks
 SET name = 'amazon', link = 'www.amazon.com'
 WHERE id = '53';`
 
 - Eliminazione di un record all'interno della tabella bookmarks:
-`DELETE FROM bookmarks WHERE id='53';`
+- `DELETE FROM bookmarks WHERE id='53';`

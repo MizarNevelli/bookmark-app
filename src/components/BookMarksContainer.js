@@ -39,55 +39,51 @@ function BookMarksContainer({ bookMarksList = [], setBookMarksList = {} }) {
                     </div>
                 }
                 <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-
-                    {bookMarksList && bookMarksList.map((element) => (
-                        <div key={element.id} className="group relative">
-                            <div
+                    
+                {bookMarksList && bookMarksList.map((element) => (
+                    <div class="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+                        <div
                                 style={{ backgroundImage: `url(${element.image_url})` }}
-                                className={`bg-no-repeat bg-center bg-cover w-full h-64 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:aspect-none`}
+                                className={`relative bg-no-repeat bg-center bg-cover w-full h-64 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:aspect-none`}
+                        >
+                            <div
+                                data-modal-toggle="popup-modal"
+                                className=" absolute flex justify-center items-center right-2 top-2 bg-white bg-opacity-60 border-black border-1 cursor-pointer border-solid w-8 h-8 rounded-full"
+                                onClick={() => {
+                                    setOpenModalDelete(true);
+                                    setDeleteId(element.id)
+                                }}
+                                type="button"
                             >
-                                <div
-                                    data-modal-toggle="popup-modal"
-                                    className=" absolute flex justify-center items-center right-2 top-2 bg-white bg-opacity-60 border-black border-1 cursor-pointer border-solid w-8 h-8 rounded-full"
-                                    onClick={() => {
-                                        setOpenModalDelete(true);
-                                        setDeleteId(element.id)
-                                    }}
-                                    type="button"
-                                >
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                                        <path strokeLinecap="round" strokeLinejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                                    </svg>
-                                </div>
-                                <div
-                                    data-modal-toggle="popup-modal"
-                                    className=" absolute flex justify-center items-center left-2 top-2 bg-white bg-opacity-60 border-black border-1 cursor-pointer border-solid w-8 h-8 rounded-full"
-                                    onClick={() => {
-                                        setOpenModalUpdate(true);
-                                        setElementToUpdate(element);
-                                    }}
-                                    type="button"
-                                >
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                        <path fillRule="evenodd" d="M3 4a1 1 0 011-1h4a1 1 0 010 2H6.414l2.293 2.293a1 1 0 01-1.414 1.414L5 6.414V8a1 1 0 01-2 0V4zm9 1a1 1 0 110-2h4a1 1 0 011 1v4a1 1 0 11-2 0V6.414l-2.293 2.293a1 1 0 11-1.414-1.414L13.586 5H12zm-9 7a1 1 0 112 0v1.586l2.293-2.293a1 1 0 011.414 1.414L6.414 15H8a1 1 0 110 2H4a1 1 0 01-1-1v-4zm13-1a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 110-2h1.586l-2.293-2.293a1 1 0 011.414-1.414L15 13.586V12a1 1 0 011-1z" clipRule="evenodd" />
-                                    </svg>
-                                </div>
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                </svg>
                             </div>
-                            <div className="mt-2 justify-between rounded-md  bg-white">
-                                <div className="w-full ">
-                                    <>Name: </><p className="text-indigo-700 text-xl"> {element.name}</p>
-                                    <>ID: </><p className="text-indigo-700 text-xl">{element.id}</p>
-                                </div>
-                                
-                                <h3 className="text-sm text-gray-700 text-center w-full">
-                                    <a href={'https://' + element.link} target='_blank' rel="noreferrer">
-                                       
-                                        <p>Vai al sito linkato! </p>
-                                    </a>
-                                </h3>
+                            <div
+                                data-modal-toggle="popup-modal"
+                                className=" absolute flex justify-center items-center left-2 top-2 bg-white bg-opacity-60 border-black border-1 cursor-pointer border-solid w-8 h-8 rounded-full"
+                                onClick={() => {
+                                    setOpenModalUpdate(true);
+                                    setElementToUpdate(element);
+                                }}
+                                type="button"
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fillRule="evenodd" d="M3 4a1 1 0 011-1h4a1 1 0 010 2H6.414l2.293 2.293a1 1 0 01-1.414 1.414L5 6.414V8a1 1 0 01-2 0V4zm9 1a1 1 0 110-2h4a1 1 0 011 1v4a1 1 0 11-2 0V6.414l-2.293 2.293a1 1 0 11-1.414-1.414L13.586 5H12zm-9 7a1 1 0 112 0v1.586l2.293-2.293a1 1 0 011.414 1.414L6.414 15H8a1 1 0 110 2H4a1 1 0 01-1-1v-4zm13-1a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 110-2h1.586l-2.293-2.293a1 1 0 011.414-1.414L15 13.586V12a1 1 0 011-1z" clipRule="evenodd" />
+                                </svg>
                             </div>
                         </div>
-                    ))}
+                        <div class="p-5">
+                            <div>
+                                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{element.name}</h5>
+                            </div>
+                            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{ }</p>
+                            <a href={'https://' + element.link} target='_blank' rel="noreferrer">
+                                <p>Vai al sito linkato! </p>
+                            </a>
+                        </div>
+                    </div>
+                ))}
                 </div>
                 {/* MODAL UPDATE */}
                 {openModalUpdate &&
